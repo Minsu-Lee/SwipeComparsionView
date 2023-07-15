@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SwipeComparsionView">
-
+        <attr name="afterDrawableRes" format="reference" />
+        <attr name="beforeDrawableRes" format="reference" />
+        <attr name="thumbDrawableRes" format="reference" />
+        <attr name="thumbWidth" format="reference|dimension" />
+        <attr name="thumbHeight" format="reference|dimension" />
+        <attr name="centerLineWidth" format="reference|dimension" />
+        <attr name="centerLineColor" format="reference|color" />
     </declare-styleable>
 </resources>

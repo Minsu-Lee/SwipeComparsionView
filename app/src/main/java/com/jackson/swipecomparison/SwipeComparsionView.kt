@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import com.jackson.swipecomparison.utils.Utils
 import com.jackson.swipecomparison.utils.ViewUtils
@@ -19,13 +20,13 @@ class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
     private var leftMargin = 0
     private var rightMargin = 0
 
-    private var afterDrawableRes = R.drawable.ic_android_blue
-    private var beforeDrawableRes = R.drawable.ic_android_black
-    private var thumbDrawableRes = R.drawable.img_swiper_thumb
-    private var thumbWidth = Utils.dp2px(context, 56).toInt()
-    private var thumbHeight = Utils.dp2px(context, 56).toInt()
-    private var centerLineWidth = Utils.dp2px(context, 2).toInt()
-    private var centerLineColor = R.color.default_center_line_color
+    private var afterDrawableRes: Int = 0
+    private var beforeDrawableRes: Int = 0
+    private var thumbDrawableRes: Int = 0
+    private var thumbWidth: Int = 0
+    private var thumbHeight: Int = 0
+    private var centerLineWidth: Int = 0
+    private var centerLineColor: Int = 0
 
     private val ivAfter: ImageView by lazy {
         ImageView(context).apply {
@@ -77,7 +78,7 @@ class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
                 endToEnd = R.id.iv_swiper_thumb
                 bottomToBottom = R.id.iv_after
             }
-            setBackgroundResource(centerLineColor)
+            setBackgroundColor(centerLineColor)
         }
     }
 
@@ -120,6 +121,34 @@ class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
             )
 
             try {
+                afterDrawableRes = typedArray.getResourceId(
+                    R.styleable.SwipeComparsionView_afterDrawableRes,
+                    R.drawable.ic_android_blue
+                )
+                beforeDrawableRes = typedArray.getResourceId(
+                    R.styleable.SwipeComparsionView_beforeDrawableRes,
+                    R.drawable.ic_android_black
+                )
+                thumbDrawableRes = typedArray.getResourceId(
+                    R.styleable.SwipeComparsionView_thumbDrawableRes,
+                    R.drawable.img_swiper_thumb
+                )
+                thumbWidth = typedArray.getDimensionPixelSize(
+                    R.styleable.SwipeComparsionView_thumbWidth,
+                    Utils.dp2px(context, 56).toInt()
+                )
+                thumbHeight = typedArray.getDimensionPixelSize(
+                    R.styleable.SwipeComparsionView_thumbHeight,
+                    thumbWidth
+                )
+                centerLineWidth = typedArray.getDimensionPixelSize(
+                    R.styleable.SwipeComparsionView_centerLineWidth,
+                    Utils.dp2px(context, 2).toInt()
+                )
+                centerLineColor = typedArray.getColor(
+                    R.styleable.SwipeComparsionView_centerLineColor,
+                    ContextCompat.getColor(context, R.color.default_center_line_color)
+                )
 
             } finally {
                 typedArray.recycle()
@@ -171,7 +200,8 @@ class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
         }
 
         swiperThumb.x = (centerValue - (thumbWidth / 2)).toFloat()
-        centerLine.x = centerValue.toFloat()
+        val centerLineWidth = centerLine.width
+        centerLine.x = centerValue.toFloat() - centerLineWidth.div(2)
 
         ivBefore.updateLayoutParams<LinearLayout.LayoutParams> {
             this.width = widthPx
@@ -198,8 +228,9 @@ class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
                     view.x = targetPosition
 
                     // Center Line
-                    val centerValue = targetPosition + (thumbWidth / 2)
-                    centerLine.x = centerValue
+                    val centerValue = targetPosition + thumbWidth.div(2)
+                    val centerLineWidth = centerLine.width
+                    centerLine.x = centerValue - centerLineWidth.div(2)
 
                     // before image parent layout
                     llBefore.updateLayoutParams<LayoutParams> {
