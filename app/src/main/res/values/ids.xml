@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="siv_parent_id" type="id" />
+    <item name="iv_before" type="id" />
+    <item name="iv_after" type="id" />
+    <item name="ll_after" type="id" />
+    <item name="iv_swiper_thumb" type="id" />
+    <item name="v_center_line" type="id" />
+</resources>
