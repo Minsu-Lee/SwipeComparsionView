@@ -1,4 +1,4 @@
-package com.jackson.swipecomparison
+package com.jackson.swipecomparsion
 
 import org.junit.Test
 

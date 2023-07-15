@@ -1,4 +1,4 @@
-package com.jackson.swipecomparison
+package com.jackson.swipecomparsion
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,15 +10,13 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
-import com.jackson.swipecomparison.utils.Utils
-import com.jackson.swipecomparison.utils.ViewUtils
+import com.jackson.swipecomparsion.utils.Utils
+import com.jackson.swipecomparsion.utils.ViewUtils
 
 class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
 
     private var widthPx: Int = 0
-    private var heightPx: Int = 0
     private var leftMargin = 0
-    private var rightMargin = 0
 
     private var afterDrawableRes: Int = 0
     private var beforeDrawableRes: Int = 0
@@ -178,14 +176,11 @@ class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
         val _width = right - left
-        val _height = bottom - top
 
-        if (widthPx != _width || heightPx != _height) {
+        if (widthPx != _width) {
             leftMargin = ViewUtils.calcTotalMarginStarts(this)
-            rightMargin = ViewUtils.calcTotalMarginEnd(this)
             widthPx = _width
-            heightPx = _height
-            initViewSize(widthPx, heightPx)
+            initViewSize(widthPx)
         }
     }
 
@@ -193,7 +188,7 @@ class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
      * 전체 뷰 크기가 변경될 때에만 호출됩니다.
      * - width or height 변경 시
      */
-    private fun initViewSize(widthPx: Int, heightPx: Int) {
+    private fun initViewSize(widthPx: Int) {
         val centerValue = widthPx / 2
         llBefore.updateLayoutParams {
             this.width = centerValue

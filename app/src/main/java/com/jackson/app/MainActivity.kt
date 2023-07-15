@@ -1,9 +1,9 @@
-package com.jackson.swipecomparison
+package com.jackson.app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jackson.swipecomparison.databinding.ActivityMainBinding
-import com.jackson.swipecomparison.extensions.setContentView
+import com.jackson.app.databinding.ActivityMainBinding
+import com.jackson.app.extensions.setContentView
 
 class MainActivity : AppCompatActivity() {
 

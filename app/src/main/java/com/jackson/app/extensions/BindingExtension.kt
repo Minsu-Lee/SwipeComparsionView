@@ -1,4 +1,4 @@
-package com.jackson.swipecomparison.extensions
+package com.jackson.app.extensions
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
