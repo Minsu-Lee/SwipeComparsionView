@@ -1,4 +1,4 @@
-package com.jackson.swipecomparsion
+package com.jackson.swipecomparison
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,10 +10,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
-import com.jackson.swipecomparsion.utils.Utils
-import com.jackson.swipecomparsion.utils.ViewUtils
+import com.jackson.swipecomparison.utils.Utils
+import com.jackson.swipecomparison.utils.ViewUtils
 
-class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
+class SwipeComparisonView: ConstraintLayout, View.OnTouchListener {
 
     private var widthPx: Int = 0
     private var leftMargin = 0
@@ -113,38 +113,38 @@ class SwipeComparsionView: ConstraintLayout, View.OnTouchListener {
         if (attrs != null) {
             val typedArray = context.obtainStyledAttributes(
                 attrs,
-                R.styleable.SwipeComparsionView,
+                R.styleable.SwipeComparisonView,
                 defStyleAttr,
                 defStyleRes
             )
 
             try {
                 afterDrawableRes = typedArray.getResourceId(
-                    R.styleable.SwipeComparsionView_afterDrawableRes,
+                    R.styleable.SwipeComparisonView_afterDrawableRes,
                     R.drawable.ic_android_blue
                 )
                 beforeDrawableRes = typedArray.getResourceId(
-                    R.styleable.SwipeComparsionView_beforeDrawableRes,
+                    R.styleable.SwipeComparisonView_beforeDrawableRes,
                     R.drawable.ic_android_black
                 )
                 thumbDrawableRes = typedArray.getResourceId(
-                    R.styleable.SwipeComparsionView_thumbDrawableRes,
+                    R.styleable.SwipeComparisonView_thumbDrawableRes,
                     R.drawable.img_swiper_thumb
                 )
                 thumbWidth = typedArray.getDimensionPixelSize(
-                    R.styleable.SwipeComparsionView_thumbWidth,
+                    R.styleable.SwipeComparisonView_thumbWidth,
                     Utils.dp2px(context, 56).toInt()
                 )
                 thumbHeight = typedArray.getDimensionPixelSize(
-                    R.styleable.SwipeComparsionView_thumbHeight,
+                    R.styleable.SwipeComparisonView_thumbHeight,
                     thumbWidth
                 )
                 centerLineWidth = typedArray.getDimensionPixelSize(
-                    R.styleable.SwipeComparsionView_centerLineWidth,
+                    R.styleable.SwipeComparisonView_centerLineWidth,
                     Utils.dp2px(context, 2).toInt()
                 )
                 centerLineColor = typedArray.getColor(
-                    R.styleable.SwipeComparsionView_centerLineColor,
+                    R.styleable.SwipeComparisonView_centerLineColor,
                     ContextCompat.getColor(context, R.color.default_center_line_color)
                 )
 

@@ -1,4 +1,4 @@
-package com.jackson.swipecomparsion.utils
+package com.jackson.swipecomparison.utils
 
 import android.content.Context
 import android.content.res.Resources
